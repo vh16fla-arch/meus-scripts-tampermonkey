@@ -47,7 +47,7 @@
         }
 
         ol {
-            padding-left: 20px;
+            padding-left: 40px; /* aumenta espaço para não colidir */
         }
 
         li {
@@ -61,8 +61,8 @@
             content: "➤";
             color: #00ffff;
             position: absolute;
-            left: -25px;
-            top: 0;
+            left: -30px; /* mais afastado */
+            top: 3px;    /* descido para alinhar melhor */
         }
 
         a {
@@ -91,10 +91,13 @@
         }
 
         img {
-            max-width: 100%;
+            max-width: 50%; /* metade do tamanho */
             border-radius: 10px;
             margin-top: 10px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+            display: block;
+            margin-left: auto;
+            margin-right: auto; /* centraliza a imagem */
         }
 
         em {
