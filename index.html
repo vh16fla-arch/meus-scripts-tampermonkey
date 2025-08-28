@@ -3,45 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <title>Instalação Scripts Tampermonkey</title>
+    <style>
+        /* Fundo com animação sutil */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(120deg, #00c6ff, #0072ff, #00ff7f);
+            background-size: 600% 600%;
+            animation: gradientBG 15s ease infinite;
+            color: #fff;
+        }
+
+        @keyframes gradientBG {
+            0%{background-position:0% 50%}
+            50%{background-position:100% 50%}
+            100%{background-position:0% 50%}
+        }
+
+        /* Container centralizado */
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: rgba(0,0,0,0.6);
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: #fffb;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #ccffcc;
+            border-bottom: 2px solid #00ff7f;
+            padding-bottom: 5px;
+        }
+
+        ol {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 40px;
+            font-size: 1.1em;
+            line-height: 1.5em;
+            position: relative;
+        }
+
+        li::before {
+            content: "➤";
+            color: #00ffff;
+            position: absolute;
+            left: -25px;
+            top: 0;
+        }
+
+        a {
+            color: #00ffff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        button {
+            background: #00ff7f;
+            color: #000;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+        }
+
+        img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-top: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+        }
+
+        em {
+            display: block;
+            margin-top: 8px;
+            color: #ccffcc;
+            font-style: italic;
+        }
+    </style>
 </head>
 <body>
-    <h1>Instalação Scripts Tampermonkey</h1>
+    <div class="container">
+        <h1>Instalação Scripts Tampermonkey</h1>
 
-    <h2>Passo a passo</h2>
-    <ol>
-        <li>
-            <strong>Instale a extensão de navegador Tampermonkey:</strong><br>
-            <a href="https://www.tampermonkey.net/" target="_blank">Clique aqui para instalar</a>
-            <br>
-            <!-- Placeholder para print ou vídeo -->
-            <img src="placeholder-tamper.png" alt="Print da instalação do Tampermonkey" style="max-width:500px; display:block; margin-top:10px;">
-        </li>
-        <li>
-            <strong>Clique no ícone da extensão.:</strong><br>
-            Verifique a mensagem que diz "habilite o modo de desenvolvedor", clique e siga o passo a passo para sua versão. A mensagem sumirá, indicando sucesso da operação.
-            <br>
-            <!-- Placeholder para print -->
-            <img src="placeholder-devmode.png" alt="Print habilitando modo de desenvolvedor" style="max-width:500px; display:block; margin-top:10px;">
-        </li>
-        <li>
-            <strong>Instale o Script Mestre:</strong><br>
-            Clique no botão abaixo para instalar o script mestre:
-            <br><br>
-            <a href="script-mestre.user.js" target="_blank">
-                <button>Instalar Script Mestre</button>
-            </a>
-            <br>
-            <!-- Placeholder para print ou vídeo -->
-            <img src="placeholder-mestre.png" alt="Print do Script Mestre sendo instalado" style="max-width:500px; display:block; margin-top:10px;">
-        </li>
-        <li>
-            <strong>Script Mestre:</strong><br>
-            O script mestre irá carregar automaticamente os scripts individuais.
-            <br>
-            <!-- Placeholder para print ou vídeo -->
-            <img src="placeholder-carregando.png" alt="Print dos scripts individuais sendo carregados" style="max-width:500px; display:block; margin-top:10px;">
-        </li>
-    </ol>
-
+        <h2>Passo a passo</h2>
+        <ol>
+            <li>
+                <strong>Instale a extensão de navegador Tampermonkey:</strong><br>
+                <a href="https://www.tampermonkey.net/" target="_blank">Clique aqui para instalar</a>
+                <br>
+                <!-- Placeholder para print ou vídeo -->
+                <img src="placeholder-tamper.png" alt="Print da instalação do Tampermonkey">
+            </li>
+            <li>
+                <strong>Clique no ícone da extensão.:</strong><br>
+                Verifique a mensagem que diz "habilite o modo de desenvolvedor", clique e siga o passo a passo para sua versão. A mensagem sumirá, indicando sucesso da operação.
+                <br>
+                <!-- Placeholder para print -->
+                <img src="placeholder-devmode.png" alt="Print habilitando modo de desenvolvedor">
+            </li>
+            <li>
+                <strong>Instale o Script Mestre:</strong><br>
+                Clique no botão abaixo para instalar o script mestre:
+                <br><br>
+                <a href="script-mestre.user.js" target="_blank">
+                    <button>Instalar Script Mestre</button>
+                </a>
+                <br>
+                <!-- Placeholder para print ou vídeo -->
+                <img src="placeholder-mestre.png" alt="Print do Script Mestre sendo instalado">
+            </li>
+            <li>
+                <strong>Script Mestre:</strong><br>
+                O script mestre irá carregar automaticamente os scripts individuais. 
+                <em>Não é necessário fazer nada, apenas aguarde alguns segundos até que todos os scripts sejam carregados.</em>
+                <br>
+                <!-- Placeholder para print ou vídeo -->
+                <img src="placeholder-carregando.png" alt="Print dos scripts individuais sendo carregados">
+            </li>
+        </ol>
+    </div>
 </body>
 </html>
