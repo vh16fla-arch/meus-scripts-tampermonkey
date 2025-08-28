@@ -98,6 +98,7 @@
             display: block;
             margin-left: auto;
             margin-right: auto; /* centraliza a imagem */
+            cursor: pointer; /* indica que pode clicar */
         }
 
         em {
@@ -105,6 +106,27 @@
             margin-top: 8px;
             color: #ccffcc;
             font-style: italic;
+        }
+
+        /* Estilo do lightbox */
+        #lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+
+        #lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.8);
         }
     </style>
 </head>
@@ -120,18 +142,14 @@
                 <a href="https://www.tampermonkey.net/" target="_blank">Clique aqui para instalar</a>
                 <br>
                 <!-- Placeholder para print ou vídeo -->
-                <a href="1.1.png" target="_blank">
-                    <img src="1.1.png" alt="Print da instalação do Tampermonkey">
-                </a>
+                <img src="1.1.png" alt="Print da instalação do Tampermonkey">
             </li>
             <li>
                 <strong>Clique no ícone da extensão.:</strong><br>
                 Verifique a mensagem que diz /"habilite o modo de desenvolvedor"</b>, clique e siga o passo a passo para sua versão. A mensagem sumirá, indicando sucesso da operação.
                 <br>
                 <!-- Placeholder para print -->
-                <a href="placeholder-devmode.png" target="_blank">
-                    <img src="placeholder-devmode.png" alt="Print habilitando modo de desenvolvedor">
-                </a>
+                <img src="placeholder-devmode.png" alt="Print habilitando modo de desenvolvedor">
             </li>
             <li>
                 <strong>Instale o Script Mestre:</strong><br>
@@ -142,9 +160,7 @@
                 </a>
                 <br>
                 <!-- Placeholder para print ou vídeo -->
-                <a href="placeholder-mestre.png" target="_blank">
-                    <img src="placeholder-mestre.png" alt="Print do Script Mestre sendo instalado">
-                </a>
+                <img src="placeholder-mestre.png" alt="Print do Script Mestre sendo instalado">
             </li>
             <li>
                 <strong>Script Mestre:</strong><br>
@@ -152,11 +168,33 @@
                 <em>Não é necessário fazer nada, apenas aguarde alguns segundos até que todos os scripts sejam carregados.</em>
                 <br>
                 <!-- Placeholder para print ou vídeo -->
-                <a href="placeholder-carregando.png" target="_blank">
-                    <img src="placeholder-carregando.png" alt="Print dos scripts individuais sendo carregados">
-                </a>
+                <img src="placeholder-carregando.png" alt="Print dos scripts individuais sendo carregados">
             </li>
         </ol>
     </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox">
+        <img src="" alt="Imagem ampliada">
+    </div>
+
+    <script>
+        // Seleciona todas as imagens dentro da container
+        const imgs = document.querySelectorAll('.container img');
+        const lightbox = document.getElementById('lightbox');
+        const lbImg = lightbox.querySelector('img');
+
+        imgs.forEach(img => {
+            img.addEventListener('click', () => {
+                lbImg.src = img.src; // define a imagem do lightbox
+                lightbox.style.display = 'flex'; // mostra o lightbox
+            });
+        });
+
+        lightbox.addEventListener('click', () => {
+            lightbox.style.display = 'none'; // esconde ao clicar no fundo
+            lbImg.src = '';
+        });
+    </script>
 </body>
 </html>
