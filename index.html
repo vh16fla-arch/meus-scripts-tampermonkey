@@ -128,15 +128,73 @@
             border-radius: 10px;
             box-shadow: 0 8px 20px rgba(0,0,0,0.8);
         }
+
+        /* Bolinhas checklist */
+        #checklist {
+            position: fixed;
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .check {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #00ffff;
+            cursor: pointer;
+            position: relative;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .check:hover {
+            transform: scale(1.3);
+        }
+
+        .check.completed {
+            background-color: #00ff7f;
+        }
+
+        /* Tooltip */
+        .check::after {
+            content: attr(title);
+            position: absolute;
+            left: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.7);
+            padding: 3px 8px;
+            border-radius: 5px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s;
+        }
+
+        .check:hover::after {
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
+    <!-- Bolinhas checklist -->
+    <div id="checklist">
+        <div class="check" data-target="passo1" title="Passo 1"></div>
+        <div class="check" data-target="passo2" title="Passo 2"></div>
+        <div class="check" data-target="passo3" title="Passo 3"></div>
+        <div class="check" data-target="passo4" title="Passo 4"></div>
+    </div>
+
     <div class="container">
         <h1>Instalação Scripts Tampermonkey</h1>
 
         <h2>Passo a passo</h2>
         <ol>
-            <li>
+            <li id="passo1">
                 <strong>Instale a extensão de navegador Tampermonkey:</strong><br>
                 Escolha a sua versão, e clique em IR PARA A LOJA, como na imagem abaixo:
                 <a href="https://www.tampermonkey.net/" target="_blank">Clique aqui para instalar</a>
@@ -144,14 +202,14 @@
                 <!-- Placeholder para print ou vídeo -->
                 <img src="1.1.png" alt="Print da instalação do Tampermonkey">
             </li>
-            <li>
+            <li id="passo2">
                 <strong>Clique no ícone da extensão.:</strong><br>
                 Verifique a mensagem que diz /"habilite o modo de desenvolvedor"</b>, clique e siga o passo a passo para sua versão. A mensagem sumirá, indicando sucesso da operação.
                 <br>
                 <!-- Placeholder para print -->
                 <img src="placeholder-devmode.png" alt="Print habilitando modo de desenvolvedor">
             </li>
-            <li>
+            <li id="passo3">
                 <strong>Instale o Script Mestre:</strong><br>
                 Clique no botão abaixo para instalar o script mestre:
                 <br><br>
@@ -162,7 +220,7 @@
                 <!-- Placeholder para print ou vídeo -->
                 <img src="3.1.png" alt="Print do Script Mestre sendo instalado">
             </li>
-            <li>
+            <li id="passo4">
                 <strong>Script Mestre:</strong><br>
                 O script mestre irá carregar automaticamente os scripts individuais. 
                 <em>Não é necessário fazer nada, apenas aguarde alguns segundos até que todos os scripts sejam carregados.</em>
@@ -179,21 +237,31 @@
     </div>
 
     <script>
-        // Seleciona todas as imagens dentro da container
+        // Lightbox
         const imgs = document.querySelectorAll('.container img');
         const lightbox = document.getElementById('lightbox');
         const lbImg = lightbox.querySelector('img');
 
         imgs.forEach(img => {
             img.addEventListener('click', () => {
-                lbImg.src = img.src; // define a imagem do lightbox
-                lightbox.style.display = 'flex'; // mostra o lightbox
+                lbImg.src = img.src;
+                lightbox.style.display = 'flex';
             });
         });
 
         lightbox.addEventListener('click', () => {
-            lightbox.style.display = 'none'; // esconde ao clicar no fundo
+            lightbox.style.display = 'none';
             lbImg.src = '';
+        });
+
+        // Checklist
+        const checks = document.querySelectorAll('#checklist .check');
+        checks.forEach((check, index) => {
+            check.addEventListener('click', () => {
+                check.classList.toggle('completed');
+                const step = document.getElementById('passo' + (index+1));
+                if(step) step.scrollIntoView({behavior: "smooth"});
+            });
         });
     </script>
 </body>
